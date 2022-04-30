@@ -1,10 +1,16 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Navbar from '../components/Navbar';
 
 interface LayoutProps {
     children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+    const [amount, setAmount] = useState<number>(0);
+    const { asPath } = useRouter();
+
     return (
         <>
             <Head>
@@ -13,6 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <meta name="description" content="E Commerce Web App with Next.js and TypeScript" />
             </Head>
 
+            {(asPath !== '/login' && asPath !== '/register') && <Navbar amount={amount} setAmount={setAmount} />}
             <main>{children}</main>
         </>
     );
