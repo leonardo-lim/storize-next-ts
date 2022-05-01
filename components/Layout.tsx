@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -21,6 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {(asPath !== '/login' && asPath !== '/register') && <Navbar amount={amount} setAmount={setAmount} />}
             <main>{children}</main>
+            <Footer />
         </>
     );
 };
