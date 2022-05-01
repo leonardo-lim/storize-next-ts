@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Background from './Background';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -20,6 +21,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <meta name="description" content="E Commerce Web App with Next.js and TypeScript" />
             </Head>
 
+            <Background />
             {(asPath !== '/login' && asPath !== '/register') && <Navbar amount={amount} setAmount={setAmount} />}
             <main>{children}</main>
             <Footer />
