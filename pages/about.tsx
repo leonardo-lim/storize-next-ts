@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { FaBox, FaExchangeAlt, FaUser } from 'react-icons/fa';
 
 const About: NextPage = () => {
     return (
@@ -21,17 +22,17 @@ const About: NextPage = () => {
                         </div>
                         <div className="row">
                             <div className="col-4 text-center">
-                                <h1><i className="fa fa-box fa-2x text-gold"></i></h1>
+                                <h1><FaBox size={56} className="text-gold" /></h1>
                                 <h2>100m+</h2>
                                 <h6>products sold</h6>
                             </div>
                             <div className="col-4 text-center">
-                                <h1><i className="fa fa-exchange fa-2x text-gold"></i></h1>
+                                <h1><FaExchangeAlt size={56} className="text-gold" /> </h1>
                                 <h2>50m+</h2>
                                 <h6>transactions done</h6>
                             </div>
                             <div className="col-4 text-center">
-                                <h1><i className="fa fa-user fa-2x text-gold"></i></h1>
+                                <h1><FaUser size={56} className="text-gold" /></h1>
                                 <h2>1m+</h2>
                                 <h6>actived users</h6>
                             </div>
