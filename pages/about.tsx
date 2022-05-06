@@ -13,7 +13,7 @@ const About: NextPage = () => {
             <div className="container">
                 <div className="row min-vh-100 pt-5 d-flex align-items-center text-black">
                     <div className="col-lg-5 col-12">
-                        <Image src="/img/scrolling.png" alt="Scrolling" width="100%" height="100%" layout="responsive" />
+                        <Image src="/img/scrolling.png" alt="Scrolling" width="100%" height="100%" layout="responsive" priority />
                     </div>
                     <div className="col-lg-7 col-12">
                         <div className="row mb-3">
