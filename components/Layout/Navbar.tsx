@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaShoppingCart, FaSignInAlt } from 'react-icons/fa';
+import { AmountContext } from './Layout';
 
 const Nav = styled.nav`
     z-index: 1;
@@ -27,12 +28,8 @@ const Amount = styled.span`
     padding: 0 5px;
 `;
 
-interface NavbarProps {
-    amount: number;
-    setAmount: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ amount, setAmount }) => {
+const Navbar: React.FC = () => {
+    const { amount, setAmount } = useContext(AmountContext)!;
     const { asPath } = useRouter();
 
     useEffect(() => {
@@ -45,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ amount, setAmount }) => {
             data = JSON.parse(rawData);
         }
 
-        setAmount(data?.length);
+        setAmount(data.length);
     }, [setAmount]);
 
     return (
