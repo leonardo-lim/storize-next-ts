@@ -30,7 +30,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             <AmountContext.Provider value={{ amount, setAmount }}>
                 <Background />
-                {(asPath !== '/login' && asPath !== '/register') && <Navbar amount={amount} setAmount={setAmount} />}
+                {(asPath !== '/login' && asPath !== '/register') && <Navbar />}
                 <main>{children}</main>
                 <Footer />
             </AmountContext.Provider>
