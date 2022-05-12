@@ -1,13 +1,20 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import Background from './Background';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
+interface AmountType {
+    amount: number;
+    setAmount: React.Dispatch<React.SetStateAction<number>>;
+}
+
 interface LayoutProps {
     children: React.ReactNode;
 }
+
+const AmountContext = createContext<AmountType | null>(null);
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
     const [amount, setAmount] = useState<number>(0);
@@ -21,12 +28,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <meta name="description" content="E Commerce Web App with Next.js and TypeScript" />
             </Head>
 
-            <Background />
-            {(asPath !== '/login' && asPath !== '/register') && <Navbar amount={amount} setAmount={setAmount} />}
-            <main>{children}</main>
-            <Footer />
+            <AmountContext.Provider value={{ amount, setAmount }}>
+                <Background />
+                {(asPath !== '/login' && asPath !== '/register') && <Navbar amount={amount} setAmount={setAmount} />}
+                <main>{children}</main>
+                <Footer />
+            </AmountContext.Provider>
         </>
     );
 };
 
+export { AmountContext };
 export default Layout;
