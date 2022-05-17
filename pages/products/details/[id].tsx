@@ -151,6 +151,7 @@ const ProductDetails: NextPage = () => {
 
                 itemData.push(item);
                 localStorage.setItem('items', JSON.stringify(itemData));
+                item.price = item.unitPrice;
 
                 setQuantity(1);
                 setPrice(unitPrice);
