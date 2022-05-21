@@ -41,7 +41,7 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ item, i }) => {
-    const { itemData, setItemData, updateSubtotalPrice } = useContext(CartItemContext)!
+    const { itemData, setItemData, updateSubtotalPrice } = useContext(CartItemContext)!;
     const { setAmount } = useContext(AmountContext)!;
 
     const decreaseQuantity = (idx: number) => {

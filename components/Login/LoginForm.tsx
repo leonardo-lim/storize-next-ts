@@ -18,9 +18,7 @@ interface DataType {
     password: string;
 }
 
-interface ErrorsType {
-    [name: string]: string;
-}
+type ErrorsType = Record<string, string>;
 
 interface FormInputType {
     data: DataType;
@@ -59,7 +57,7 @@ const LoginForm: React.FC = () => {
 
     return (
         <form action="/login" method="POST" className="text-lg-start text-center">
-            <FormInputContext.Provider value={{data, setData, errors}}>
+            <FormInputContext.Provider value={{ data, setData, errors }}>
                 <LoginFormInput type="text" propKey="username" icon={<FaUser className="text-gold" />} />
                 <LoginFormInput type="password" propKey="password" icon={<FaLock className="text-gold" />} />
             </FormInputContext.Provider>

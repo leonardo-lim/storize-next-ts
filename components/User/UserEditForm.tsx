@@ -15,9 +15,7 @@ interface DataType {
     zipCode: string;
 }
 
-interface ErrorsType {
-    [name: string]: string;
-}
+type ErrorsType = Record<string, string>;
 
 interface FormInputType {
     data: DataType;
@@ -63,7 +61,7 @@ const UserEditForm: React.FC = () => {
     return (
         <form action="/users/update" method="POST" className="text-lg-start text-center">
             <div className="row">
-                <FormInputContext.Provider value={{data, setData, errors}}>
+                <FormInputContext.Provider value={{ data, setData, errors }}>
                     <div className="col-lg-6 col-12">
                         <UserEditFormInput propKey="name" icon={<FaTag className="text-gold" />} readOnly={false} />
                         <UserEditFormInput propKey="phone" icon={<FaPhoneAlt className="text-gold" />} readOnly={false} />

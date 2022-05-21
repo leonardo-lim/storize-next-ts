@@ -13,9 +13,7 @@ interface DataType {
     confirmPassword: string;
 }
 
-interface ErrorsType {
-    [name: string]: string;
-}
+type ErrorsType = Record<string, string>;
 
 interface FormInputType {
     data: DataType;
@@ -58,7 +56,7 @@ const RegisterForm: React.FC = () => {
 
     return (
         <form action="/register" method="POST" className="text-lg-start text-center">
-            <FormInputContext.Provider value={{data, setData, errors}}>
+            <FormInputContext.Provider value={{ data, setData, errors }}>
                 <RegisterFormInput type="text" propKey="name" icon={<FaTag className="text-gold" />} />
                 <RegisterFormInput type="text" propKey="phone" icon={<FaPhoneAlt className="text-gold" />} />
                 <RegisterFormInput type="text" propKey="email" icon={<FaEnvelope className="text-gold" />} />
