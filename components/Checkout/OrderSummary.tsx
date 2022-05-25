@@ -1,22 +1,7 @@
+import type { CartProductType } from '../../types/product-type';
 import Link from 'next/link';
 import { useContext, useEffect, useState } from 'react';
 import { AmountContext } from '../Layout/Layout';
-
-interface ItemDataType {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-    quantity: number;
-    unitPrice: number;
-    quantityError: boolean;
-}
 
 interface OrderSummaryProps {
     feeIndex: number;
@@ -39,7 +24,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ feeIndex }) => {
         const rawData = localStorage.getItem('items');
 
         if (rawData) {
-            const data: ItemDataType[] = JSON.parse(rawData);
+            const data: CartProductType[] = JSON.parse(rawData);
 
             const newSubtotalPrice = data.reduce((total, current) => {
                 return total + current.price;

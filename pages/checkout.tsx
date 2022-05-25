@@ -1,28 +1,13 @@
 import type { NextPage } from 'next';
+import type { CartProductType } from '../types/product-type';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import CheckoutItem from '../components/Checkout/CheckoutItem';
 import ShippingFee from '../components/Checkout/ShippingFee';
 import OrderSummary from '../components/Checkout/OrderSummary';
 
-interface ItemDataType {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-    quantity: number;
-    unitPrice: number;
-    quantityError: boolean;
-}
-
 const Checkout: NextPage = () => {
-    const [itemData, setItemData] = useState<ItemDataType[]>([]);
+    const [itemData, setItemData] = useState<CartProductType[]>([]);
     const [feeIndex, setFeeIndex] = useState<number>(0);
 
     useEffect(() => {

@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import type { CartProductType } from '../../../types/product-type';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
@@ -21,22 +22,6 @@ const QuantityInput = styled.input`
     border: none;
     outline: none;
 `;
-
-interface ProductType {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-    quantity?: number;
-    unitPrice?: number;
-    quantityError?: boolean;
-}
 
 const ProductDetails: NextPage = () => {
     const [rating, setRating] = useState<number>(0);
@@ -66,7 +51,7 @@ const ProductDetails: NextPage = () => {
         revalidateOnReconnect: false
     };
 
-    const { data: item } = useSWR<ProductType>(address, fetcher, options);
+    const { data: item } = useSWR<CartProductType>(address, fetcher, options);
 
     const decreaseQuantity = () => {
         if (quantity > 1) {

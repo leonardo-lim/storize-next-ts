@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import type { CartProductType } from '../types/product-type';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,32 +7,16 @@ import { createContext, useEffect, useState } from 'react';
 import { FaArrowRight, FaFrown, FaShoppingCart } from 'react-icons/fa';
 import CartItem from '../components/Cart/CartItem';
 
-interface ItemDataType {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-    quantity: number;
-    unitPrice: number;
-    quantityError: boolean;
-}
-
 interface CartItemType {
-    itemData: ItemDataType[];
-    setItemData: React.Dispatch<React.SetStateAction<ItemDataType[]>>;
+    itemData: CartProductType[];
+    setItemData: React.Dispatch<React.SetStateAction<CartProductType[]>>;
     updateSubtotalPrice: () => void;
 }
 
 const CartItemContext = createContext<CartItemType | null>(null);
 
 const Cart: NextPage = () => {
-    const [itemData, setItemData] = useState<ItemDataType[]>([]);
+    const [itemData, setItemData] = useState<CartProductType[]>([]);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0);
 
     const updateSubtotalPrice = () => {
@@ -46,7 +31,7 @@ const Cart: NextPage = () => {
         const rawData = localStorage.getItem('items');
 
         if (rawData) {
-            const data: ItemDataType[] = JSON.parse(rawData);
+            const data: CartProductType[] = JSON.parse(rawData);
 
             const newSubtotalPrice = data.reduce((total, current) => {
                 return total + current.price;
