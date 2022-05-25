@@ -1,22 +1,10 @@
 import type { NextPage } from 'next';
+import type { ProductType } from '../../types/product-type';
 import Head from 'next/head';
 import useSWR from 'swr';
 import axios from 'axios';
 import FetchLoading from '../../components/Widget/FetchLoading';
 import ProductItem from '../../components/Product/ProductItem';
-
-interface ProductType {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-}
 
 const Product: NextPage = () => {
     const address = 'https://fakestoreapi.com/products';

@@ -1,3 +1,4 @@
+import type { ProductType } from '../../types/product-type';
 import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
@@ -19,19 +20,6 @@ const CardImage = styled.div`
     height: 350px;
     overflow: hidden;
 `;
-
-interface ProductType {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-        rate: number;
-        count: number;
-    };
-}
 
 interface ProductItemProps {
     item: ProductType;
