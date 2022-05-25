@@ -61,17 +61,15 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
 
     const updateQuantity = (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
         const quantity = parseInt(e.target.value);
+        const updatedItemData = [...itemData];
 
         if (isNaN(quantity)) {
-            const updatedItemData = [...itemData];
-
             updatedItemData.splice(idx, 1);
             setItemData(updatedItemData);
             setAmount(itemData.length - 1);
 
             localStorage.setItem('items', JSON.stringify(updatedItemData));
         } else if (quantity >= 1 && quantity <= itemData[idx].rating.count) {
-            const updatedItemData = [...itemData];
             const currentItem = updatedItemData[idx];
 
             currentItem.quantity = quantity;
@@ -82,8 +80,6 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
 
             setItemData(updatedItemData);
         } else if (quantity > itemData[idx].rating.count) {
-            const updatedItemData = [...itemData];
-
             updatedItemData[idx].quantityError = true;
             setItemData(updatedItemData);
         }
