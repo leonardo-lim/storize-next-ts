@@ -12,7 +12,7 @@ const ProductImage = styled.div`
     overflow: hidden;
 `;
 
-const Quantity = styled.input`
+const QuantityInput = styled.input`
     width: 45px;
     height: 30px;
     border: none;
@@ -134,7 +134,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, i }) => {
                 </div>
                 <div className="col-md-2 col-6 mt-md-0 mt-3 bg-beige text-center rounded">
                     <button className="btn text-white p-0" onClick={() => decreaseQuantity(i)}><FaMinus /></button>
-                    <Quantity type="text" className="bg-transparent text-center text-white mx-1 fs-5" value={item.quantity} onChange={(e) => updateQuantity(e, i)} />
+                    <QuantityInput type="text" className="bg-transparent text-center text-white mx-1 fs-5" value={item.quantity} onChange={(e) => updateQuantity(e, i)} />
                     <button className="btn text-white p-0" onClick={() => increaseQuantity(i)}><FaPlus /></button>
                     <br />
                     <button className="btn text-white" title="Remove" onClick={() => removeItem(i)}><FaTrash /></button>

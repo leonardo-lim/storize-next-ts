@@ -15,7 +15,7 @@ const ProductImage = styled.img`
     }
 `;
 
-const Quantity = styled.input`
+const QuantityInput = styled.input`
     width: 45px;
     height: 30px;
     border: none;
@@ -219,7 +219,7 @@ const ProductDetails: NextPage = () => {
                                     </div>
                                     <div className="col-7 text-end">
                                         <button className="btn text-white p-0" onClick={decreaseQuantity}><FaMinus /></button>
-                                        <Quantity type="text" className="bg-transparent text-center text-white mx-1 fs-5" value={quantity} onChange={updateQuantity} />
+                                        <QuantityInput type="text" className="bg-transparent text-center text-white mx-1 fs-5" value={quantity} onChange={updateQuantity} />
                                         <button className="btn text-white p-0" onClick={increaseQuantity}><FaPlus /></button>
                                     </div>
                                 </div>
