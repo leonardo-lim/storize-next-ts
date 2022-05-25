@@ -1,32 +1,15 @@
+import type { ErrorsType, FormInputType } from '../../types/form-input-type';
+import type { UserEditType } from '../../types/user-data-type';
 import Link from 'next/link';
 import { createContext, useState } from 'react';
 import { FaArrowLeft, FaArrowUp, FaCity, FaEnvelope, FaGlobe, FaHome, FaMapMarkerAlt, FaPhoneAlt, FaTag, FaUser } from 'react-icons/fa';
 import userEditSchema from '../../validations/user-edit-validation';
 import UserEditFormInput from './UserEditFormInput';
 
-interface DataType {
-    name: string;
-    phone: string;
-    email: string;
-    username: string;
-    address: string;
-    city: string;
-    country: string;
-    zipCode: string;
-}
-
-type ErrorsType = Record<string, string>;
-
-interface FormInputType {
-    data: DataType;
-    setData: React.Dispatch<React.SetStateAction<DataType>>;
-    errors: ErrorsType;
-}
-
-const FormInputContext = createContext<FormInputType | null>(null);
+const FormInputContext = createContext<FormInputType<UserEditType> | null>(null);
 
 const UserEditForm: React.FC = () => {
-    const [data, setData] = useState<DataType>({
+    const [data, setData] = useState<UserEditType>({
         name: '-',
         phone: '-',
         email: '-',

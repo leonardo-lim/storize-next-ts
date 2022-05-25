@@ -1,3 +1,5 @@
+import type { ErrorsType, FormInputType } from '../../types/form-input-type';
+import type { UserLoginType } from '../../types/user-data-type';
 import Link from 'next/link';
 import { createContext, useState } from 'react';
 import styled from 'styled-components';
@@ -13,23 +15,10 @@ const RegisterLink = styled.a`
     }
 `;
 
-interface DataType {
-    username: string;
-    password: string;
-}
-
-type ErrorsType = Record<string, string>;
-
-interface FormInputType {
-    data: DataType;
-    setData: React.Dispatch<React.SetStateAction<DataType>>;
-    errors: ErrorsType;
-}
-
-const FormInputContext = createContext<FormInputType | null>(null);
+const FormInputContext = createContext<FormInputType<UserLoginType> | null>(null);
 
 const LoginForm: React.FC = () => {
-    const [data, setData] = useState<DataType>({
+    const [data, setData] = useState<UserLoginType>({
         username: '',
         password: ''
     });

@@ -1,30 +1,15 @@
+import type { ErrorsType, FormInputType } from '../../types/form-input-type';
+import type { UserRegisterType } from '../../types/user-data-type';
 import Link from 'next/link';
 import { createContext, useState } from 'react';
 import { FaArrowLeft, FaEnvelope, FaLock, FaPhoneAlt, FaTag, FaUnlock, FaUser, FaUserPlus } from 'react-icons/fa';
 import registerSchema from '../../validations/register-validation';
 import RegisterFormInput from './RegisterFormInput';
 
-interface DataType {
-    name: string;
-    phone: string;
-    email: string;
-    username: string;
-    password: string;
-    confirmPassword: string;
-}
-
-type ErrorsType = Record<string, string>;
-
-interface FormInputType {
-    data: DataType;
-    setData: React.Dispatch<React.SetStateAction<DataType>>;
-    errors: ErrorsType;
-}
-
-const FormInputContext = createContext<FormInputType | null>(null);
+const FormInputContext = createContext<FormInputType<UserRegisterType> | null>(null);
 
 const RegisterForm: React.FC = () => {
-    const [data, setData] = useState<DataType>({
+    const [data, setData] = useState<UserRegisterType>({
         name: '',
         phone: '',
         email: '',
