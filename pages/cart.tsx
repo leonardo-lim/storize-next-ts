@@ -100,9 +100,9 @@ const Cart: NextPage = () => {
                                 <hr />
 
                                 <CartItemContext.Provider value={{ itemData, setItemData, updateSubtotalPrice }}>
-                                    {itemData.map((item, i) => {
+                                    {itemData.map((item, index) => {
                                         return (
-                                            <CartItem key={item.id} item={item} i={i} />
+                                            <CartItem key={item.id} item={item} index={index} />
                                         );
                                     })}
                                 </CartItemContext.Provider>

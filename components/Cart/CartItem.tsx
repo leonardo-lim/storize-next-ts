@@ -37,10 +37,10 @@ interface ProductType {
 
 interface CartItemProps {
     item: ProductType;
-    i: number;
+    index: number;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ item, i }) => {
+const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
     const { itemData, setItemData, updateSubtotalPrice } = useContext(CartItemContext)!;
     const { setAmount } = useContext(AmountContext)!;
 
@@ -133,11 +133,11 @@ const CartItem: React.FC<CartItemProps> = ({ item, i }) => {
                     <h6 className="px-2">{item.title}</h6>
                 </div>
                 <div className="col-md-2 col-6 mt-md-0 mt-3 bg-beige text-center rounded">
-                    <button className="btn text-white p-0" onClick={() => decreaseQuantity(i)}><FaMinus /></button>
-                    <QuantityInput type="text" className="bg-transparent text-center text-white mx-1 fs-5" value={item.quantity} onChange={(e) => updateQuantity(e, i)} />
-                    <button className="btn text-white p-0" onClick={() => increaseQuantity(i)}><FaPlus /></button>
+                    <button className="btn text-white p-0" onClick={() => decreaseQuantity(index)}><FaMinus /></button>
+                    <QuantityInput type="text" className="bg-transparent text-center text-white mx-1 fs-5" value={item.quantity} onChange={(e) => updateQuantity(e, index)} />
+                    <button className="btn text-white p-0" onClick={() => increaseQuantity(index)}><FaPlus /></button>
                     <br />
-                    <button className="btn text-white" title="Remove" onClick={() => removeItem(i)}><FaTrash /></button>
+                    <button className="btn text-white" title="Remove" onClick={() => removeItem(index)}><FaTrash /></button>
                 </div>
                 <div className="col-md-2 col-6 mt-md-0 mt-3">
                     <h6>${item.price}</h6>
