@@ -29,8 +29,8 @@ const ProductDetails: NextPage = () => {
     const [unitPrice, setUnitPrice] = useState<number>(0);
     const [price, setPrice] = useState<number>(0);
     const [quantity, setQuantity] = useState<number>(1);
-    const [quantityError, setQuantityError] = useState<boolean>(false);
-    const [successMessage, setSuccessMessage] = useState<boolean>(false);
+    const [isQuantityError, setIsQuantityError] = useState<boolean>(false);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
     let itemData;
 
     const { setAmount } = useContext(AmountContext)!;
@@ -57,8 +57,8 @@ const ProductDetails: NextPage = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
             setPrice(parseFloat((unitPrice * (quantity - 1)).toFixed(2)));
-            setQuantityError(false);
-            setSuccessMessage(false);
+            setIsQuantityError(false);
+            setIsSuccess(false);
         }
     };
 
@@ -68,24 +68,24 @@ const ProductDetails: NextPage = () => {
         if (isNaN(newQuantity)) {
             setQuantity(0);
             setPrice(0);
-            setQuantityError(false);
+            setIsQuantityError(false);
         } else if (newQuantity >= 1 && newQuantity <= stock) {
             setQuantity(newQuantity);
             setPrice(parseFloat((unitPrice * newQuantity).toFixed(2)));
-            setQuantityError(false);
+            setIsQuantityError(false);
         } else if (newQuantity > stock) {
-            setQuantityError(true);
+            setIsQuantityError(true);
         }
 
-        setSuccessMessage(false);
+        setIsSuccess(false);
     };
 
     const increaseQuantity = () => {
         if (quantity < stock) {
             setQuantity(quantity + 1);
             setPrice(parseFloat((unitPrice * (quantity + 1)).toFixed(2)));
-            setQuantityError(false);
-            setSuccessMessage(false);
+            setIsQuantityError(false);
+            setIsSuccess(false);
         }
     };
 
@@ -117,14 +117,14 @@ const ProductDetails: NextPage = () => {
 
             if (exist) {
                 if (currentQuantity > stock) {
-                    setQuantityError(true);
-                    setSuccessMessage(false);
+                    setIsQuantityError(true);
+                    setIsSuccess(false);
                 } else {
                     localStorage.setItem('items', JSON.stringify(itemData));
                     setQuantity(1);
                     setPrice(unitPrice);
-                    setQuantityError(false);
-                    setSuccessMessage(true);
+                    setIsQuantityError(false);
+                    setIsSuccess(true);
                 }
             } else {
                 item.quantity = quantity;
@@ -132,7 +132,7 @@ const ProductDetails: NextPage = () => {
 
                 const newPrice = item.unitPrice * item.quantity;
                 item.price = parseFloat(newPrice.toFixed(2));
-                item.quantityError = false;
+                item.isQuantityError = false;
 
                 itemData.push(item);
                 localStorage.setItem('items', JSON.stringify(itemData));
@@ -141,8 +141,8 @@ const ProductDetails: NextPage = () => {
                 setQuantity(1);
                 setPrice(unitPrice);
                 setAmount(itemData.length);
-                setQuantityError(false);
-                setSuccessMessage(true);
+                setIsQuantityError(false);
+                setIsSuccess(true);
             }
         }
     };
@@ -195,8 +195,8 @@ const ProductDetails: NextPage = () => {
                             <div className="col-lg-3 col-12 mb-lg-0 mb-5 p-3 bg-beige text-white text-center rounded shadow-sm">
                                 <h1 className="mb-3"><FaShoppingCart /></h1>
 
-                                {quantityError && <p className="alert alert-warning p-2">Max purchased item is {stock}</p>}
-                                {successMessage && <p className="alert alert-success p-2">Added to cart</p>}
+                                {isQuantityError && <p className="alert alert-warning p-2">Max purchased item is {stock}</p>}
+                                {isSuccess && <p className="alert alert-success p-2">Added to cart</p>}
 
                                 <div className="row mb-2">
                                     <div className="col-5 text-start mt-1">

@@ -38,7 +38,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
             const price = currentItem.unitPrice * currentItem.quantity;
 
             currentItem.price = parseFloat(price.toFixed(2));
-            currentItem.quantityError = false;
+            currentItem.isQuantityError = false;
 
             setItemData(updatedItemData);
         }
@@ -61,11 +61,11 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
             const price = currentItem.unitPrice * currentItem.quantity;
 
             currentItem.price = parseFloat(price.toFixed(2));
-            currentItem.quantityError = false;
+            currentItem.isQuantityError = false;
 
             setItemData(updatedItemData);
         } else if (quantity > itemData[idx].rating.count) {
-            updatedItemData[idx].quantityError = true;
+            updatedItemData[idx].isQuantityError = true;
             setItemData(updatedItemData);
         }
     };
@@ -79,7 +79,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
             const price = currentItem.unitPrice * currentItem.quantity;
 
             currentItem.price = parseFloat(price.toFixed(2));
-            currentItem.quantityError = false;
+            currentItem.isQuantityError = false;
 
             setItemData(updatedItemData);
         }
@@ -126,7 +126,7 @@ const CartItem: React.FC<CartItemProps> = ({ item, index }) => {
             </div>
             <div className="row">
                 <div className="col">
-                    {item.quantityError && <p className="alert alert-warning p-2">Max purchased item is {item.rating.count}</p>}
+                    {item.isQuantityError && <p className="alert alert-warning p-2">Max purchased item is {item.rating.count}</p>}
                 </div>
             </div>
             <hr />

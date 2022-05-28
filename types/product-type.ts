@@ -14,7 +14,7 @@ interface ProductType {
 interface CartProductType extends ProductType {
     quantity: number;
     unitPrice: number;
-    quantityError: boolean;
+    isQuantityError: boolean;
 }
 
 export type { ProductType, CartProductType };
