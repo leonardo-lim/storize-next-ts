@@ -1,17 +1,5 @@
 import Joi from 'joi';
 
-const isUsername: Joi.CustomValidator = (value: string, helpers) => {
-    for (let i = 0; i < value.length; i++) {
-        if ((value[i] >= 'a' && value[i] <= 'z') || (value[i] >= '0' && value[i] <= '9') || value[i] === '.' || value[i] === '-' || value[i] === '_') {
-            continue;
-        } else {
-            return helpers.message({ custom: 'Invalid username format' });
-        }
-    }
-
-    return true;
-};
-
 const userEditSchema = Joi.object({
     name: Joi
         .string()
@@ -39,11 +27,11 @@ const userEditSchema = Joi.object({
         .string()
         .required()
         .max(50)
-        .custom(isUsername)
+        .pattern(/^[a-z0-9.\-_]+$/)
         .messages({
             'string.empty': 'Username field is required',
             'string.max': 'Username field should not contain more than 50 characters',
-            'string.custom': 'Invalid username format'
+            'string.pattern.base': 'Invalid username format'
         }),
     address: Joi
         .string()
