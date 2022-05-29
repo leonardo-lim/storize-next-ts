@@ -8,10 +8,10 @@ interface OrderSummaryProps {
 }
 
 const OrderSummary: React.FC<OrderSummaryProps> = ({ feeIndex }) => {
-    const [subtotalPrice, setSubtotalPrice] = useState<number>(0);
-    const [taxPrice, setTaxPrice] = useState<number>(0);
-    const [shippingPrice, setShippingPrice] = useState<number>(0);
-    const [totalPrice, setTotalPrice] = useState<number>(0);
+    const [subtotalPrice, setSubtotalPrice] = useState(0);
+    const [taxPrice, setTaxPrice] = useState(0);
+    const [shippingPrice, setShippingPrice] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const { setAmount } = useContext(AmountContext)!;
 

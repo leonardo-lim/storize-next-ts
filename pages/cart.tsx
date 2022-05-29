@@ -17,7 +17,7 @@ const CartItemContext = createContext<CartItemType | null>(null);
 
 const Cart: NextPage = () => {
     const [itemData, setItemData] = useState<CartProductType[]>([]);
-    const [subtotalPrice, setSubtotalPrice] = useState<number>(0);
+    const [subtotalPrice, setSubtotalPrice] = useState(0);
 
     const updateSubtotalPrice = () => {
         const newSubtotalPrice = itemData.reduce((total, current) => {

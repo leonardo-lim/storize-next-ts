@@ -24,13 +24,13 @@ const QuantityInput = styled.input`
 `;
 
 const ProductDetails: NextPage = () => {
-    const [rating, setRating] = useState<number>(0);
-    const [stock, setStock] = useState<number>(0);
-    const [unitPrice, setUnitPrice] = useState<number>(0);
-    const [price, setPrice] = useState<number>(0);
-    const [quantity, setQuantity] = useState<number>(1);
-    const [isQuantityError, setIsQuantityError] = useState<boolean>(false);
-    const [isSuccess, setIsSuccess] = useState<boolean>(false);
+    const [rating, setRating] = useState(0);
+    const [stock, setStock] = useState(0);
+    const [unitPrice, setUnitPrice] = useState(0);
+    const [price, setPrice] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const [isQuantityError, setIsQuantityError] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
     let itemData;
 
     const { setAmount } = useContext(AmountContext)!;

@@ -17,7 +17,7 @@ interface LayoutProps {
 const AmountContext = createContext<AmountType | null>(null);
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const [amount, setAmount] = useState<number>(0);
+    const [amount, setAmount] = useState(0);
     const { asPath } = useRouter();
 
     return (

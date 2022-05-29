@@ -8,7 +8,7 @@ import OrderSummary from '../components/Checkout/OrderSummary';
 
 const Checkout: NextPage = () => {
     const [itemData, setItemData] = useState<CartProductType[]>([]);
-    const [feeIndex, setFeeIndex] = useState<number>(0);
+    const [feeIndex, setFeeIndex] = useState(0);
 
     useEffect(() => {
         const rawData = localStorage.getItem('items');
