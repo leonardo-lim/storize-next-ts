@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
                 <a href="https://www.github.com/leonardo-lim" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
             </div>
             <div className="icon">
-                <a href="https://www.instagram.com/leonardolim78" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                <a href="https://www.instagram.com/leonardo.lim_" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
             </div>
         </Foo>
     );
